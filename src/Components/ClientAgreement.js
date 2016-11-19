@@ -3,22 +3,21 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { loremIpsum } from '../utilities/filler_text';
 import { postData } from '../utilities/axios';
+import { SubmitButton, PatientAgreementCheckbox } from './FormComponents';
+import { Section, Space, Label } from 'rebass';
+import validateClientAgreement from '../validation/client_agreement';
 
 class ClientAgreement extends React.Component {
 
   render () {
-    const { handleSubmit, pristine, reset, submitting, previousPage, nextPage, form } = this.props;
+    const { handleSubmit, pristine, submitting, nextPage, form, valid } = this.props;
     return (
       <div>
-        <p>{loremIpsum}</p>
         <form onSubmit={ handleSubmit(() => postData(form, nextPage))}>
-          <div>
-            <label htmlFor="agreement">Sign this agreement</label>
-            <Field name="agreement" component="input" type="text" placeholder="First Name"/>
-          </div>
-
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
-          <button type="button" disabled={submitting} onClick={previousPage}>Previous</button>
+          <Label>Please read and agree to our Client Agreement.</Label>
+          <p>{loremIpsum}</p>
+          <Field name="clientAgreement" component={PatientAgreementCheckbox} />
+          <SubmitButton pristine={pristine} submitting={submitting} valid={valid} />
         </form>
       </div>
     );
@@ -35,4 +34,5 @@ const connected = connect(mapStateToProps)(ClientAgreement);
 export default reduxForm({
   form: 'patient_form',
   destroyOnUnmount: false,
+  validate: validateClientAgreement
 })(connected);

@@ -4,14 +4,14 @@ import ContactInformation from './ContactInformation';
 import MedicalHistory from './MedicalHistory';
 import ClientAgreement from './ClientAgreement';
 import SubmitSummary from './SubmitSummary';
-import { PageHeader, Container, Divider, Section } from 'rebass';
+import { PageHeader, Container, Section } from 'rebass';
 
 export default class PatientQuestionnaire extends React.Component {
 
   constructor (props) {
     super(props);
     this.nextPage = this.nextPage.bind(this);
-    this.previousPage = this.previousPage.bind(this);
+    this.restart = this.restart.bind(this);
     this.state = {
       page: 0
     };
@@ -21,8 +21,8 @@ export default class PatientQuestionnaire extends React.Component {
     this.setState({ page: this.state.page + 1 });
   }
 
-  previousPage () {
-    this.setState({ page: this.state.page - 1 });
+  restart () {
+    this.setState({ page: 0 });
   }
 
   render () {
@@ -41,10 +41,10 @@ export default class PatientQuestionnaire extends React.Component {
                   {children: 'Summary'}]}
         />
         <Section>
-          {page === 0 && <ContactInformation nextPage={this.nextPage}/>}
-          {page === 1 && <MedicalHistory previousPage={this.previousPage} nextPage={this.nextPage}/>}
-          {page === 2 && <ClientAgreement previousPage={this.previousPage} nextPage={this.nextPage}/>}
-          {page === 3 && <SubmitSummary/>}
+          {page === 0 && <ContactInformation nextPage={this.nextPage} />}
+          {page === 1 && <MedicalHistory nextPage={this.nextPage} />}
+          {page === 2 && <ClientAgreement nextPage={this.nextPage} />}
+          {page === 3 && <SubmitSummary restart={this.restart} />}
         </Section>
       </Container>
     );
