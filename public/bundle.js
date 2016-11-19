@@ -38198,15 +38198,15 @@
 
 	var _ContactInformation2 = _interopRequireDefault(_ContactInformation);
 
-	var _MedicalHistory = __webpack_require__(514);
+	var _MedicalHistory = __webpack_require__(515);
 
 	var _MedicalHistory2 = _interopRequireDefault(_MedicalHistory);
 
-	var _ClientAgreement = __webpack_require__(515);
+	var _ClientAgreement = __webpack_require__(516);
 
 	var _ClientAgreement2 = _interopRequireDefault(_ClientAgreement);
 
-	var _SubmitSummary = __webpack_require__(541);
+	var _SubmitSummary = __webpack_require__(542);
 
 	var _SubmitSummary2 = _interopRequireDefault(_SubmitSummary);
 
@@ -38250,21 +38250,24 @@
 	      var page = this.state.page;
 
 	      return _react2.default.createElement(
-	        'div',
+	        _rebass.Container,
 	        null,
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          'Patient Questionnaire'
-	        ),
+	        _react2.default.createElement(_rebass.PageHeader, {
+	          description: 'Please complete this form prior to your appointment.',
+	          heading: 'Patient Questionnaire'
+	        }),
 	        _react2.default.createElement(_rebass.SequenceMap, {
 	          active: page,
 	          steps: [{ children: 'Contact Information' }, { children: 'Medical History' }, { children: 'Client Agreement' }, { children: 'Summary' }]
 	        }),
-	        page === 0 && _react2.default.createElement(_ContactInformation2.default, { nextPage: this.nextPage }),
-	        page === 1 && _react2.default.createElement(_MedicalHistory2.default, { previousPage: this.previousPage, nextPage: this.nextPage }),
-	        page === 2 && _react2.default.createElement(_ClientAgreement2.default, { previousPage: this.previousPage, nextPage: this.nextPage }),
-	        page === 3 && _react2.default.createElement(_SubmitSummary2.default, null)
+	        _react2.default.createElement(
+	          _rebass.Section,
+	          null,
+	          page === 0 && _react2.default.createElement(_ContactInformation2.default, { nextPage: this.nextPage }),
+	          page === 1 && _react2.default.createElement(_MedicalHistory2.default, { previousPage: this.previousPage, nextPage: this.nextPage }),
+	          page === 2 && _react2.default.createElement(_ClientAgreement2.default, { previousPage: this.previousPage, nextPage: this.nextPage }),
+	          page === 3 && _react2.default.createElement(_SubmitSummary2.default, null)
+	        )
 	      );
 	    }
 	  }]);
@@ -45076,15 +45079,13 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reduxForm = __webpack_require__(201);
 
-	var _reactRouter = __webpack_require__(391);
+	var _FormComponents = __webpack_require__(514);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -45094,21 +45095,13 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var date = function date(field) {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement('input', _extends({}, field.input, { type: 'date', name: 'dob' }))
-	  );
-	};
-
 	var ContactInformation = function (_React$Component) {
 	  _inherits(ContactInformation, _React$Component);
 
-	  function ContactInformation(props) {
+	  function ContactInformation() {
 	    _classCallCheck(this, ContactInformation);
 
-	    return _possibleConstructorReturn(this, (ContactInformation.__proto__ || Object.getPrototypeOf(ContactInformation)).call(this, props));
+	    return _possibleConstructorReturn(this, (ContactInformation.__proto__ || Object.getPrototypeOf(ContactInformation)).apply(this, arguments));
 	  }
 
 	  _createClass(ContactInformation, [{
@@ -45117,88 +45110,27 @@
 	      var _props = this.props,
 	          handleSubmit = _props.handleSubmit,
 	          pristine = _props.pristine,
-	          reset = _props.reset,
 	          submitting = _props.submitting,
 	          nextPage = _props.nextPage;
 
 	      return _react2.default.createElement(
-	        'form',
-	        { onSubmit: handleSubmit(nextPage) },
+	        'div',
+	        null,
 	        _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'label',
-	            { htmlFor: 'firstName' },
-	            'First Name'
-	          ),
-	          _react2.default.createElement(_reduxForm.Field, { name: 'firstName', component: 'input', type: 'text', placeholder: 'First Name' })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'label',
-	            { htmlFor: 'lastName' },
-	            'Last Name'
-	          ),
-	          _react2.default.createElement(_reduxForm.Field, { name: 'lastName', component: 'input', type: 'text', placeholder: 'Last Name' })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'label',
-	            { htmlFor: 'dob' },
-	            'Date of Birth'
-	          ),
-	          _react2.default.createElement(_reduxForm.Field, { name: 'dob', component: date })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'label',
-	            { htmlFor: 'email' },
-	            'Email'
-	          ),
-	          _react2.default.createElement(_reduxForm.Field, { name: 'email', component: 'input', type: 'email' })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'label',
-	            { htmlFor: 'sex' },
-	            'Sex'
-	          ),
-	          _react2.default.createElement(
-	            'label',
-	            null,
-	            _react2.default.createElement(_reduxForm.Field, { name: 'sex', component: 'input', type: 'radio', value: 'male' }),
-	            ' Male'
-	          ),
-	          _react2.default.createElement(
-	            'label',
-	            null,
-	            _react2.default.createElement(_reduxForm.Field, { name: 'sex', component: 'input', type: 'radio', value: 'female' }),
-	            ' Female'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'label',
-	            { htmlFor: 'reason_for_visit' },
-	            'Reason for Visit'
-	          ),
-	          _react2.default.createElement(_reduxForm.Field, { name: 'reason_for_visit', component: 'textarea', placeholder: 'Briefly describe the reason for your visit today.' })
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { type: 'submit', disabled: pristine || submitting },
-	          'Next'
+	          'form',
+	          { onSubmit: handleSubmit(nextPage) },
+	          _react2.default.createElement(_reduxForm.Field, { name: 'firstName', component: _FormComponents.FirstName }),
+	          _react2.default.createElement(_reduxForm.Field, { name: 'lastName', component: _FormComponents.LastName }),
+	          _react2.default.createElement(_reduxForm.Field, { name: 'address1', component: _FormComponents.Address1 }),
+	          _react2.default.createElement(_reduxForm.Field, { name: 'address2', component: _FormComponents.Address2 }),
+	          _react2.default.createElement(_reduxForm.Field, { name: 'city', component: _FormComponents.City }),
+	          _react2.default.createElement(_reduxForm.Field, { name: 'state', component: _FormComponents.State }),
+	          _react2.default.createElement(_reduxForm.Field, { name: 'zip', component: _FormComponents.ZipCode }),
+	          _react2.default.createElement(_reduxForm.Field, { name: 'dob', component: _FormComponents.DateOfBirth }),
+	          _react2.default.createElement(_reduxForm.Field, { name: 'phone', component: _FormComponents.Phone }),
+	          _react2.default.createElement(_reduxForm.Field, { name: 'email', component: _FormComponents.Email }),
+	          _react2.default.createElement(_reduxForm.Field, { name: 'sex', component: _FormComponents.Sex }),
+	          _react2.default.createElement(_FormComponents.NextButton, { pristine: pristine, submitting: submitting })
 	        )
 	      );
 	    }
@@ -45221,6 +45153,187 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.PreviousButton = exports.NextButton = exports.CheckConditions = exports.Hospitalizations = exports.Medications = exports.ReasonForVisit = exports.Sex = exports.Email = exports.Phone = exports.DateOfBirth = exports.ZipCode = exports.State = exports.City = exports.Address2 = exports.Address1 = exports.LastName = exports.FirstName = undefined;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _rebass = __webpack_require__(445);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	//------------------------------ContactInformation Form Components------------------------------//
+
+	var FirstName = exports.FirstName = function FirstName(field) {
+	  return _react2.default.createElement(_rebass.Input, _extends({}, field.input, {
+	    label: 'First Name',
+	    placeholder: 'First Name',
+	    rounded: true
+	  }));
+	};
+
+	var LastName = exports.LastName = function LastName(field) {
+	  return _react2.default.createElement(_rebass.Input, _extends({}, field.input, {
+	    label: 'Last Name',
+	    placeholder: 'Last Name',
+	    rounded: true
+	  }));
+	};
+
+	var Address1 = exports.Address1 = function Address1(field) {
+	  return _react2.default.createElement(_rebass.Input, _extends({}, field.input, {
+	    label: 'Address (Line 1)',
+	    placeholder: 'Address (Line 1)',
+	    rounded: true
+	  }));
+	};
+
+	var Address2 = exports.Address2 = function Address2(field) {
+	  return _react2.default.createElement(_rebass.Input, _extends({}, field.input, {
+	    label: 'Address (Line 2)',
+	    placeholder: 'Address (Line 2)',
+	    rounded: true
+	  }));
+	};
+
+	var City = exports.City = function City(field) {
+	  return _react2.default.createElement(_rebass.Input, _extends({}, field.input, {
+	    label: 'City',
+	    placeholder: 'City',
+	    rounded: true
+	  }));
+	};
+
+	var State = exports.State = function State(field) {
+	  return _react2.default.createElement(_rebass.Input, _extends({}, field.input, {
+	    label: 'State',
+	    placeholder: 'State',
+	    rounded: true
+	  }));
+	};
+
+	var ZipCode = exports.ZipCode = function ZipCode(field) {
+	  return _react2.default.createElement(_rebass.Input, _extends({}, field.input, {
+	    label: 'Zip Code',
+	    placeholder: 'Zip Code',
+	    rounded: true
+	  }));
+	};
+
+	var DateOfBirth = exports.DateOfBirth = function DateOfBirth(field) {
+	  return _react2.default.createElement(_rebass.Input, _extends({}, field.input, {
+	    label: 'Date of Birth',
+	    type: 'date',
+	    rounded: true
+	  }));
+	};
+
+	var Phone = exports.Phone = function Phone(field) {
+	  return _react2.default.createElement(_rebass.Input, _extends({}, field.input, {
+	    label: 'Phone Number',
+	    type: 'tel',
+	    placeholder: '123-456-7890',
+	    rounded: true
+	  }));
+	};
+
+	var Email = exports.Email = function Email(field) {
+	  return _react2.default.createElement(_rebass.Input, _extends({}, field.input, {
+	    label: 'Email',
+	    type: 'email',
+	    placeholder: 'example@gmail.com',
+	    rounded: true
+	  }));
+	};
+
+	var Sex = exports.Sex = function Sex(field) {
+	  return _react2.default.createElement(_rebass.Select, _extends({}, field.input, {
+	    label: 'Sex',
+	    options: [{ children: 'Male', value: 'male' }, { children: 'Female', value: 'female' }],
+	    rounded: true
+	  }));
+	};
+
+	//------------------------------MedicalHistory Form Components------------------------------//
+
+	var ReasonForVisit = exports.ReasonForVisit = function ReasonForVisit(field) {
+	  return _react2.default.createElement(_rebass.Textarea, _extends({}, field.input, {
+	    label: 'Please describe the reason for your visit.',
+	    rounded: true
+	  }));
+	};
+
+	var Medications = exports.Medications = function Medications(field) {
+	  return _react2.default.createElement(_rebass.Textarea, _extends({}, field.input, {
+	    label: 'Please describe all medications and supplements you are currently taking.',
+	    rounded: true
+	  }));
+	};
+
+	var Hospitalizations = exports.Hospitalizations = function Hospitalizations(field) {
+	  return _react2.default.createElement(_rebass.Textarea, _extends({}, field.input, {
+	    label: 'Please describe any recent hospitalizations or surgeries.',
+	    rounded: true
+	  }));
+	};
+
+	var CheckConditions = exports.CheckConditions = function CheckConditions(field) {
+	  return _react2.default.createElement(_rebass.Checkbox, _extends({}, field.input, {
+	    checked: field.input.value === true,
+	    label: field.condition,
+	    theme: 'success'
+	  }));
+	};
+
+	//------------------------------ClientAgreement Form Components------------------------------//
+
+	//------------------------------Button Components------------------------------//
+
+	var NextButton = exports.NextButton = function NextButton(_ref) {
+	  var pristine = _ref.pristine,
+	      submitting = _ref.submitting;
+	  return _react2.default.createElement(
+	    _rebass.Button,
+	    { backgroundColor: 'primary',
+	      color: 'white',
+	      inverted: true,
+	      rounded: true,
+	      type: 'submit',
+	      disabled: pristine || submitting,
+	      style: pristine || submitting ? { opacity: 0.5 } : { opacity: 1 }
+	    },
+	    'Next'
+	  );
+	};
+
+	var PreviousButton = exports.PreviousButton = function PreviousButton(_ref2) {
+	  var submitting = _ref2.submitting,
+	      previousPage = _ref2.previousPage;
+	  return _react2.default.createElement(
+	    _rebass.Button,
+	    { backgroundColor: 'primary',
+	      color: 'white',
+	      inverted: true,
+	      rounded: true,
+	      disabled: submitting,
+	      onClick: previousPage
+	    },
+	    'Previous'
+	  );
+	};
+
+/***/ },
+/* 515 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -45230,6 +45343,10 @@
 
 	var _reduxForm = __webpack_require__(201);
 
+	var _rebass = __webpack_require__(445);
+
+	var _FormComponents = __webpack_require__(514);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -45237,6 +45354,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var conditions = ['Asthma', 'Diabetes', 'Heart Disease', 'High Blood Pressure', 'Kidney Disease', 'Seizures', 'Stroke'];
 
 	var MedicalHistory = function (_React$Component) {
 	  _inherits(MedicalHistory, _React$Component);
@@ -45261,25 +45380,28 @@
 	      return _react2.default.createElement(
 	        'form',
 	        { onSubmit: handleSubmit(nextPage) },
+	        _react2.default.createElement(_reduxForm.Field, { name: 'reasonForVisit', component: _FormComponents.ReasonForVisit }),
+	        _react2.default.createElement(_reduxForm.Field, { name: 'medications', component: _FormComponents.Medications }),
+	        _react2.default.createElement(_reduxForm.Field, { name: 'hospitalizations', component: _FormComponents.Hospitalizations }),
 	        _react2.default.createElement(
-	          'div',
+	          _rebass.Label,
 	          null,
-	          _react2.default.createElement(
-	            'label',
-	            { htmlFor: 'history' },
-	            'Medical History'
-	          ),
-	          _react2.default.createElement(_reduxForm.Field, { name: 'history', component: 'input', type: 'text', placeholder: 'First Name' })
+	          'Please select all conditions that apply to you:'
 	        ),
+	        conditions.map(function (condition, i) {
+	          return _react2.default.createElement(_reduxForm.Field, {
+	            name: condition[0].toLowerCase() + condition.split(' ').join('').slice(1),
+	            condition: condition,
+	            component: _FormComponents.CheckConditions,
+	            key: i
+	          });
+	        }),
 	        _react2.default.createElement(
-	          'button',
-	          { type: 'submit', disabled: pristine || submitting },
-	          'Next'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { type: 'button', disabled: submitting, onClick: previousPage },
-	          'Previous'
+	          _rebass.Section,
+	          null,
+	          _react2.default.createElement(_FormComponents.NextButton, { pristine: pristine, submitting: submitting }),
+	          _react2.default.createElement(_rebass.Space, { x: 1 }),
+	          _react2.default.createElement(_FormComponents.PreviousButton, { submitting: submitting, previousPage: previousPage })
 	        )
 	      );
 	    }
@@ -45294,7 +45416,7 @@
 	})(MedicalHistory);
 
 /***/ },
-/* 515 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45313,7 +45435,7 @@
 
 	var _reactRedux = __webpack_require__(317);
 
-	var _axios = __webpack_require__(516);
+	var _axios = __webpack_require__(517);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -45395,20 +45517,20 @@
 	})(connected);
 
 /***/ },
-/* 516 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(517);
+	module.exports = __webpack_require__(518);
 
 /***/ },
-/* 517 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(518);
-	var bind = __webpack_require__(519);
-	var Axios = __webpack_require__(520);
+	var utils = __webpack_require__(519);
+	var bind = __webpack_require__(520);
+	var Axios = __webpack_require__(521);
 
 	/**
 	 * Create an instance of Axios
@@ -45441,15 +45563,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(538);
-	axios.CancelToken = __webpack_require__(539);
-	axios.isCancel = __webpack_require__(535);
+	axios.Cancel = __webpack_require__(539);
+	axios.CancelToken = __webpack_require__(540);
+	axios.isCancel = __webpack_require__(536);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(540);
+	axios.spread = __webpack_require__(541);
 
 	module.exports = axios;
 
@@ -45458,12 +45580,12 @@
 
 
 /***/ },
-/* 518 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(519);
+	var bind = __webpack_require__(520);
 
 	/*global toString:true*/
 
@@ -45763,7 +45885,7 @@
 
 
 /***/ },
-/* 519 */
+/* 520 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -45780,17 +45902,17 @@
 
 
 /***/ },
-/* 520 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(521);
-	var utils = __webpack_require__(518);
-	var InterceptorManager = __webpack_require__(532);
-	var dispatchRequest = __webpack_require__(533);
-	var isAbsoluteURL = __webpack_require__(536);
-	var combineURLs = __webpack_require__(537);
+	var defaults = __webpack_require__(522);
+	var utils = __webpack_require__(519);
+	var InterceptorManager = __webpack_require__(533);
+	var dispatchRequest = __webpack_require__(534);
+	var isAbsoluteURL = __webpack_require__(537);
+	var combineURLs = __webpack_require__(538);
 
 	/**
 	 * Create a new instance of Axios
@@ -45871,13 +45993,13 @@
 
 
 /***/ },
-/* 521 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(518);
-	var normalizeHeaderName = __webpack_require__(522);
+	var utils = __webpack_require__(519);
+	var normalizeHeaderName = __webpack_require__(523);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -45894,10 +46016,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(523);
+	    adapter = __webpack_require__(524);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(523);
+	    adapter = __webpack_require__(524);
 	  }
 	  return adapter;
 	}
@@ -45964,12 +46086,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 522 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(518);
+	var utils = __webpack_require__(519);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -45982,18 +46104,18 @@
 
 
 /***/ },
-/* 523 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(518);
-	var settle = __webpack_require__(524);
-	var buildURL = __webpack_require__(527);
-	var parseHeaders = __webpack_require__(528);
-	var isURLSameOrigin = __webpack_require__(529);
-	var createError = __webpack_require__(525);
-	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(530);
+	var utils = __webpack_require__(519);
+	var settle = __webpack_require__(525);
+	var buildURL = __webpack_require__(528);
+	var parseHeaders = __webpack_require__(529);
+	var isURLSameOrigin = __webpack_require__(530);
+	var createError = __webpack_require__(526);
+	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(531);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -46089,7 +46211,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(531);
+	      var cookies = __webpack_require__(532);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -46166,12 +46288,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 524 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(525);
+	var createError = __webpack_require__(526);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -46197,12 +46319,12 @@
 
 
 /***/ },
-/* 525 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(526);
+	var enhanceError = __webpack_require__(527);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -46220,7 +46342,7 @@
 
 
 /***/ },
-/* 526 */
+/* 527 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -46245,12 +46367,12 @@
 
 
 /***/ },
-/* 527 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(518);
+	var utils = __webpack_require__(519);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -46319,12 +46441,12 @@
 
 
 /***/ },
-/* 528 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(518);
+	var utils = __webpack_require__(519);
 
 	/**
 	 * Parse headers into an object
@@ -46362,12 +46484,12 @@
 
 
 /***/ },
-/* 529 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(518);
+	var utils = __webpack_require__(519);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -46436,7 +46558,7 @@
 
 
 /***/ },
-/* 530 */
+/* 531 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -46478,12 +46600,12 @@
 
 
 /***/ },
-/* 531 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(518);
+	var utils = __webpack_require__(519);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -46537,12 +46659,12 @@
 
 
 /***/ },
-/* 532 */
+/* 533 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(518);
+	var utils = __webpack_require__(519);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -46595,15 +46717,15 @@
 
 
 /***/ },
-/* 533 */
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(518);
-	var transformData = __webpack_require__(534);
-	var isCancel = __webpack_require__(535);
-	var defaults = __webpack_require__(521);
+	var utils = __webpack_require__(519);
+	var transformData = __webpack_require__(535);
+	var isCancel = __webpack_require__(536);
+	var defaults = __webpack_require__(522);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -46680,12 +46802,12 @@
 
 
 /***/ },
-/* 534 */
+/* 535 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(518);
+	var utils = __webpack_require__(519);
 
 	/**
 	 * Transform the data for a request or a response
@@ -46706,7 +46828,7 @@
 
 
 /***/ },
-/* 535 */
+/* 536 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -46717,7 +46839,7 @@
 
 
 /***/ },
-/* 536 */
+/* 537 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -46737,7 +46859,7 @@
 
 
 /***/ },
-/* 537 */
+/* 538 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -46755,7 +46877,7 @@
 
 
 /***/ },
-/* 538 */
+/* 539 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -46780,12 +46902,12 @@
 
 
 /***/ },
-/* 539 */
+/* 540 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(538);
+	var Cancel = __webpack_require__(539);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -46843,7 +46965,7 @@
 
 
 /***/ },
-/* 540 */
+/* 541 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -46876,7 +46998,7 @@
 
 
 /***/ },
-/* 541 */
+/* 542 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
