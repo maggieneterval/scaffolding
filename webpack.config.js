@@ -4,9 +4,10 @@ const appSrc = path.join(__dirname, 'src');
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: './build',
+    path: './public',
     filename: 'bundle.js'
   },
+  context: __dirname,
   resolve: {
     root: path.join(__dirname, 'node_modules')
   },
@@ -20,6 +21,6 @@ module.exports = {
           presets: ['es2015', 'react']
         }
       }
-  ]
+    ]
   }
 };

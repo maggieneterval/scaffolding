@@ -1,17 +1,23 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { browserHistory } from 'react-router';
 
-class PatientForm extends React.Component {
+const date = (field) => (
+  <div>
+     <input {...field.input} type="date" name="dob" />
+  </div>
+)
 
-  formSubmit (values) {
-    console.log(values);
-    //post to db endpoint
+class ContactInformation extends React.Component {
+
+  constructor (props) {
+    super(props);
   }
 
   render () {
-    const { handleSubmit, pristine, reset, submitting } = this.props;
+    const { handleSubmit, pristine, reset, submitting, nextPage } = this.props;
     return (
-      <form onSubmit={handleSubmit(this.formSubmit)}>
+      <form onSubmit={handleSubmit(nextPage)}>
           <div>
             <label htmlFor="firstName">First Name</label>
             <Field name="firstName" component="input" type="text" placeholder="First Name"/>
@@ -20,6 +26,11 @@ class PatientForm extends React.Component {
           <div>
             <label htmlFor="lastName">Last Name</label>
             <Field name="lastName" component="input" type="text" placeholder="Last Name"/>
+          </div>
+
+          <div>
+            <label htmlFor="dob">Date of Birth</label>
+            <Field name="dob" component={date}/>
           </div>
 
           <div>
@@ -38,7 +49,7 @@ class PatientForm extends React.Component {
             <Field name="reason_for_visit" component="textarea" placeholder="Briefly describe the reason for your visit today."/>
           </div>
 
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="submit" disabled={pristine || submitting}>Next</button>
         </form>
     );
   }
@@ -46,5 +57,6 @@ class PatientForm extends React.Component {
 }
 
 export default reduxForm({
-  form: 'patient_form'
-})(PatientForm);
+  form: 'patient_form',
+  destroyOnUnmount: false,
+})(ContactInformation);
