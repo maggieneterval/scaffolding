@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const appSrc = path.join(__dirname, 'src');
 
@@ -22,5 +23,8 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.SourceMapDevToolPlugin()
+  ]
 };

@@ -12,17 +12,12 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
-app.post('/api/clients', (req, res, next) => {
-  Client.create(req.body)
-  .then(() => res.sendStatus(201))
-  .catch(next);
-});
-
 app.use((err, req, res) => {
   console.error(err.stack);
   res.sendStatus(500);
 });
 
+//force:true in development only
 db.sync({force: true}).then(() => {
   app.listen(process.env.PORT || 8080);
 });
