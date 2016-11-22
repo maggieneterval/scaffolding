@@ -1,5 +1,5 @@
 {
-  "name": "patient-questionnaire",
+  "name": "scaffolding",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maggieneterval/patient-questionnaire.git"
+    "url": "git+https://github.com/maggieneterval/scaffolding.git"
   },
   "author": "Maggie Neterval",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/maggieneterval/patient-questionnaire/issues"
+    "url": "https://github.com/maggieneterval/scaffolding/issues"
   },
-  "homepage": "https://github.com/maggieneterval/patient-questionnaire#readme",
+  "homepage": "https://github.com/maggieneterval/scaffolding#readme",
   "dependencies": {
     "axios": "^0.15.2",
     "babel-core": "^6.18.2",
